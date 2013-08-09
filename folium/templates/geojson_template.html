@@ -66,6 +66,10 @@ function makeMap(error, {% for var in func_vars %}{{ var }}
         attribution: '{{ attr }}'
     }).addTo(map);
 
+    {% for layer in gjson_layers %}
+    {{ layer }}
+    {% endfor %}
+    
     {% for mark, popup, add_mark in markers %}
     {{ mark }}
     {{ popup }}
@@ -78,10 +82,6 @@ function makeMap(error, {% for var in func_vars %}{{ var }}
 
     {% for style in geo_styles %}
     {{ style }}
-    {% endfor %}
-
-    {% for layer in gjson_layers %}
-    {{ layer }}
     {% endfor %}
 
     {% for legend in map_legends %}
